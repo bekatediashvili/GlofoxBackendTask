@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudioController;
 use Illuminate\Http\Request;
@@ -22,10 +23,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('studio', StudioController::class)
-    ->only('index','store')->middleware('auth:sanctum');
+    ->only('index', 'store')->middleware('auth:sanctum');
 
-Route::apiResource('classes', CourseController::class)
-    ->only('index','store')->middleware('auth:sanctum');
+Route::apiResource('class', CourseController::class)
+    ->only('index', 'store')->middleware('auth:sanctum');
+
+Route::apiResource('class/{course}/booking', BookingController::class)
+    ->only('index', 'store', 'destroy')->middleware('auth:sanctum');
 
 Route::post('/login', [AuthController::class, 'login'])
     ->middleware('auth')

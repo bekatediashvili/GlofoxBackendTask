@@ -32,8 +32,9 @@ class StudioController extends Controller
      */
     public function store(StudioRequest $request)
     {
+        $date = $request->validated();
         $studio = new Studio();
-        $studio->name = $request->input('name');
+        $studio->name = $date['name'];
         $studio->user_id = auth()->user()->id;
         $studio->save();
         auth()->user()->ownedStudios()->attach($studio);

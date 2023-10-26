@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudioController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('studio', StudioController::class)
+    ->only('index','store')->middleware('auth:sanctum');
+
+Route::apiResource('classes', CourseController::class)
     ->only('index','store')->middleware('auth:sanctum');
 
 Route::post('/login', [AuthController::class, 'login'])

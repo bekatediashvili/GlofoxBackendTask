@@ -45,10 +45,11 @@ class User extends Authenticatable
 
     public function ownedStudios()
     {
-        return $this->belongsToMany(Studio::class, );
+        return $this->belongsToMany(Studio::class,);
     }
 
-    public function bookings(){
+    public function bookings()
+    {
         return $this->hasMany(Booking::class);
     }
 

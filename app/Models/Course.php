@@ -19,7 +19,6 @@ class Course extends Model
 
     public function studio()
     {
-
         return $this->belongsTo(Studio::class);
     }
 }

@@ -15,8 +15,16 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return Course::all();
+        $studios = Studio::where('user_id', auth()->user()->id)->get();
+
+        if ($studios->isNotEmpty()) {
+            $courses = Course::all();
+            return response()->json(['courses' => $courses]);
+        } else {
+            return response()->json(['message' => 'You do not own any studios.']);
+        }
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -32,6 +40,7 @@ class CourseController extends Controller
     public function store(CourseRequest $request)
     {
         $date = $request->validated();
+
         $studio = Studio::where('user_id', auth()->user()->id)->first();
 
         if ($studio) {

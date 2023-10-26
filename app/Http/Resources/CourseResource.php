@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -17,8 +18,8 @@ class CourseResource extends JsonResource
         return [
             'course_name' => $this->course_name,
             'capacity' => $this->capacity,
-            'start_date' => $this->start_date,
-            'end_date' => $this->end_date,
+            'start_date' => Carbon::parse($this->start_date)->format('Y-m-d'),
+            'end_date' => Carbon::parse($this->end_date)->format('Y-m-d'),
             'studio_id' => $this->studio_id
         ];
     }

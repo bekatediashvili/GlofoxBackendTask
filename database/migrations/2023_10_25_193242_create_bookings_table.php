@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('member_name');
             $table->date('booking_date');
             $table->foreignId('class_id')->constrained('courses');
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }

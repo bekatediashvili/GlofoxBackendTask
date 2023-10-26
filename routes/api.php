@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookAsGuestController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudioController;
@@ -28,9 +29,12 @@ Route::apiResource('studio', StudioController::class)
 Route::apiResource('class', CourseController::class)
     ->only('index', 'store')->middleware('auth:sanctum');
 
+Route::get('class/calculate/{courseName}', [CourseController::class, 'calculateClassesAndCapacity'])->middleware('auth:sanctum');
+
 Route::apiResource('class/{course}/booking', BookingController::class)
     ->only('index', 'store', 'destroy')->middleware('auth:sanctum');
 
+Route::post('/guest', BookAsGuestController::class);
 Route::post('/login', [AuthController::class, 'login'])
     ->middleware('auth')
     ->name('login');

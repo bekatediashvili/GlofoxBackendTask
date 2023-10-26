@@ -6,6 +6,7 @@ use App\Http\Requests\CourseRequest;
 use App\Http\Resources\CourseResource;
 use App\Models\Course;
 use App\Models\Studio;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -52,11 +53,33 @@ class CourseController extends Controller
             $course->studio_id = $studio->id;
             $course->save();
 
-            return response()->json(['message' => 'Course created successfully', 'data' =>  new  CourseResource($course)], 201);
+            return response()->json(['message' => 'Course created successfully', 'data' => new  CourseResource($course)], 201);
 
         } else {
             return response()->json(['message' => 'You do not own a studio, unable to create a course.'], 422);
         }
+    }
+
+    public function calculateClassesAndCapacity($courseName): JsonResponse
+    {
+        $course = Course::where('course_name', $courseName)->first();
+
+        if (!$course) {
+            return response()->json(['message' => 'Course not found'], 404);
+        }
+
+        $startDate = $course->start_date;
+        $endDate = $course->end_date;
+        $numberOfClasses = $startDate->diffInDays($endDate) + 1;
+
+        $totalCapacity = $numberOfClasses * $course->capacity;
+
+        return response()->json([
+            'course_name' => $courseName,
+            'number_of_classes' => $numberOfClasses,
+            'total_capacity' => $totalCapacity,
+            'capacity_for_each_class' => $course->capacity
+        ]);
     }
 
 

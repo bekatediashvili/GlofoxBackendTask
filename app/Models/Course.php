@@ -17,7 +17,7 @@ class Course extends Model
     ];
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function studioMember()
+    public function studio()
     {
 
         return $this->belongsTo(Studio::class);

@@ -25,4 +25,10 @@ class Studio extends Model
 
     }
 
+    public function members()
+    {
+        return $this->belongsToMany(User::class ,'studio_members')
+            ->withPivot('id');
+    }
+
 }

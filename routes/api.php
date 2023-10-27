@@ -40,9 +40,9 @@ Route::apiResource('class/{course}/booking', BookingController::class)
 Route::post('member/{studio}', BecomeMemberController::class)->middleware('auth:sanctum');
 
 
-Route::post('/guest', BookAsGuestController::class);
+Route::post('/guest', BookAsGuestController::class)->middleware('guest');
 Route::post('/login', [AuthController::class, 'login'])
-    ->middleware('auth')
+    ->middleware('guest')
     ->name('login');
 
 Route::post('/register', [AuthController::class, 'register'])

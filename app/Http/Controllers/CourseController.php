@@ -41,23 +41,20 @@ class CourseController extends Controller
     public function store(CourseRequest $request)
     {
         $date = $request->validated();
+        $studioId = request()->attributes->get('studio_id');
+        $dataWithStudioId = array_merge($date, ['studio_id' => $studioId->id]);
 
-        $studio = Studio::where('user_id', auth()->user()->id)->first();
 
-        if ($studio) {
             $course = new Course();
-            $course->course_name = $date['course_name'];
-            $course->start_date = $date['start_date'];
-            $course->end_date = $date['end_date'];
-            $course->capacity = $date['capacity'];
-            $course->studio_id = $studio->id;
+            $course->course_name = $dataWithStudioId['course_name'];
+            $course->start_date = $dataWithStudioId['start_date'];
+            $course->end_date = $dataWithStudioId['end_date'];
+            $course->capacity = $dataWithStudioId['capacity'];
+            $course->studio_id = $dataWithStudioId['studio_id'];
             $course->save();
 
             return response()->json(['message' => 'Course created successfully', 'data' => new  CourseResource($course)], 201);
 
-        } else {
-            return response()->json(['message' => 'You do not own a studio, unable to create a course.'], 422);
-        }
     }
 
     public function calculateClassesAndCapacity($courseName): JsonResponse

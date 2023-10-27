@@ -40,6 +40,7 @@ In order to start local dev server, ony thing you need is Docker on your OS. But
     ./vendor/bin/sail artisan key:generate
     ./vendor/bin/sail artisan storage:link
     ./vendor/bin/sail artisan migrate
+    ./vendor/bin/sail restart
     ```
 
 Your local environment is ready to be used

@@ -13,8 +13,10 @@ class StudioController extends Controller
      */
     public function index()
     {
-        $studios = Studio::all();
-        return response()->json(['message' => 'All Studio Members', 'data' => $studios]);
+        $user = auth()->user();
+
+        $studios = $user->ownedStudios;
+        return response()->json(['message' => 'Your Studios', 'data' => $studios]);
     }
 
     /**
@@ -22,12 +24,20 @@ class StudioController extends Controller
      */
     public function store(StudioRequest $request)
     {
-        $date = $request->validated();
+        $data = $request->validated();
         $studio = new Studio();
-        $studio->name = $date['name'];
+        $studio->name = $data['name'];
         $studio->user_id = auth()->user()->id;
         $studio->save();
-        auth()->user()->ownedStudios()->attach($studio);
+
+        $existingStudio = $studio
+            ->where('name', $data['name'])
+            ->first();
+        if ($existingStudio) {
+            return response()->json(['message' => 'Studio name  already exists']);
+        }
+
+        $studio->members()->attach(auth()->user());
 
         return response()->json(['message' => 'Studio created successfully', 'data' => new StudioResource($studio)], 201);
 

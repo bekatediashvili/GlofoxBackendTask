@@ -20,15 +20,13 @@ class Studio extends Model
 
     public function courses()
     {
-
         return $this->hasMany(Course::class);
 
     }
 
     public function members()
     {
-        return $this->belongsToMany(User::class ,'studio_members')
-            ->withPivot('id');
+        return $this->belongsToMany(User::class, 'studio_user', 'studio_id', 'user_id');
     }
 
 }

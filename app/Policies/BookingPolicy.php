@@ -5,7 +5,6 @@ namespace App\Policies;
 use App\Models\Booking;
 use App\Models\Course;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class BookingPolicy
 {
@@ -28,10 +27,9 @@ class BookingPolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user ,Course $course): bool
+    public function create(User $user, Course $course): bool
     {
-
-       return $course->studio->members()->where('user_id', auth()->user()->id)->exists();
+        return $course->studio->members()->where('user_id', auth()->user()->id)->exists();
     }
 
     /**

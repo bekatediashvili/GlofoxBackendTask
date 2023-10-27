@@ -24,10 +24,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('studio', StudioController::class)
+
+Route::apiResource('studio/{studio}/class', CourseController::class)
     ->only('index', 'store')->middleware('auth:sanctum');
 
-Route::apiResource('class', CourseController::class)
+Route::apiResource('studio', StudioController::class)
     ->only('index', 'store')->middleware('auth:sanctum');
 
 Route::get('class/calculate/{courseName}', [CourseController::class, 'calculateClassesAndCapacity'])

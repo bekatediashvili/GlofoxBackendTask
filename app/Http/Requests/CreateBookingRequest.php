@@ -13,7 +13,6 @@ class CreateBookingRequest extends FormRequest
      */
     public function authorize(): bool
     {
-
         return $this->user()->can('create', [
             Booking::class,
             $this->route('course')

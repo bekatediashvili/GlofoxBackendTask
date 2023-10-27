@@ -1,0 +1,786 @@
+{
+    "info": {
+        "_postman_id": "278e8225-3131-4033-aa47-65c3cdf8219a",
+        "name": "Glofox",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "30770238"
+    },
+    "item": [
+        {
+            "name": "GET api/user",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/api/user",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "user"
+                    ]
+                }
+            },
+            "response": [
+                {
+                    "name": "Untitled Example",
+                    "originalRequest": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/user",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "user"
+                            ]
+                        }
+                    },
+                    "code": 401,
+                    "_postman_previewlanguage": "Text",
+                    "header": [
+                        {
+                            "key": "cache-control",
+                            "value": "no-cache, private"
+                        },
+                        {
+                            "key": "content-type",
+                            "value": "application/json"
+                        },
+                        {
+                            "key": "access-control-allow-origin",
+                            "value": "*"
+                        }
+                    ],
+                    "cookie": [],
+                    "body": "{\"message\":\"Unauthenticated.\"}"
+                }
+            ]
+        },
+        {
+            "name": "Display a listing of the resource.",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/api/studio",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "studio"
+                    ]
+                }
+            },
+            "response": [
+                {
+                    "name": "Untitled Example",
+                    "originalRequest": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/studio",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "studio"
+                            ]
+                        }
+                    },
+                    "code": 401,
+                    "_postman_previewlanguage": "Text",
+                    "header": [
+                        {
+                            "key": "cache-control",
+                            "value": "no-cache, private"
+                        },
+                        {
+                            "key": "content-type",
+                            "value": "application/json"
+                        },
+                        {
+                            "key": "access-control-allow-origin",
+                            "value": "*"
+                        }
+                    ],
+                    "cookie": [],
+                    "body": "{\"message\":\"Unauthenticated.\"}"
+                }
+            ]
+        },
+        {
+            "name": "Store a newly created resource in storage.",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"name\":\"iure\"}"
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/api/studio",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "studio"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Display a listing of the resource.",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/api/class",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "class"
+                    ]
+                }
+            },
+            "response": [
+                {
+                    "name": "Untitled Example",
+                    "originalRequest": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/class",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "class"
+                            ]
+                        }
+                    },
+                    "code": 401,
+                    "_postman_previewlanguage": "Text",
+                    "header": [
+                        {
+                            "key": "cache-control",
+                            "value": "no-cache, private"
+                        },
+                        {
+                            "key": "content-type",
+                            "value": "application/json"
+                        },
+                        {
+                            "key": "access-control-allow-origin",
+                            "value": "*"
+                        }
+                    ],
+                    "cookie": [],
+                    "body": "{\"message\":\"Unauthenticated.\"}"
+                }
+            ]
+        },
+        {
+            "name": "Store a newly created resource in storage.",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"course_name\":\"molestiae\",\"capacity\":\"magni\",\"start_date\":\"2023-10-27\",\"end_date\":\"2023-10-27\"}"
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/api/class",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "class"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "GET api/class/calculate/{courseName}",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/api/class/calculate/:courseName",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "class",
+                        "calculate",
+                        ":courseName"
+                    ],
+                    "variable": [
+                        {
+                            "key": "courseName",
+                            "value": "mollitia"
+                        }
+                    ]
+                }
+            },
+            "response": [
+                {
+                    "name": "Untitled Example",
+                    "originalRequest": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/class/calculate/:courseName",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "class",
+                                "calculate",
+                                ":courseName"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "courseName",
+                                    "value": "mollitia"
+                                }
+                            ]
+                        }
+                    },
+                    "code": 401,
+                    "_postman_previewlanguage": "Text",
+                    "header": [
+                        {
+                            "key": "cache-control",
+                            "value": "no-cache, private"
+                        },
+                        {
+                            "key": "content-type",
+                            "value": "application/json"
+                        },
+                        {
+                            "key": "access-control-allow-origin",
+                            "value": "*"
+                        }
+                    ],
+                    "cookie": [],
+                    "body": "{\"message\":\"Unauthenticated.\"}"
+                }
+            ]
+        },
+        {
+            "name": "Display a listing of the resource.",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/api/class/:course/booking",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "class",
+                        ":course",
+                        "booking"
+                    ],
+                    "variable": [
+                        {
+                            "key": "course",
+                            "value": "et"
+                        }
+                    ]
+                }
+            },
+            "response": [
+                {
+                    "name": "Untitled Example",
+                    "originalRequest": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/class/:course/booking",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "class",
+                                ":course",
+                                "booking"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "course",
+                                    "value": "et"
+                                }
+                            ]
+                        }
+                    },
+                    "code": 401,
+                    "_postman_previewlanguage": "Text",
+                    "header": [
+                        {
+                            "key": "cache-control",
+                            "value": "no-cache, private"
+                        },
+                        {
+                            "key": "content-type",
+                            "value": "application/json"
+                        },
+                        {
+                            "key": "access-control-allow-origin",
+                            "value": "*"
+                        }
+                    ],
+                    "cookie": [],
+                    "body": "{\"message\":\"Unauthenticated.\"}"
+                }
+            ]
+        },
+        {
+            "name": "Store a newly created resource in storage.",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"member_name\":\"id\",\"booking_date\":\"2023-10-27\"}"
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/api/class/:course_id/booking",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "class",
+                        ":course_id",
+                        "booking"
+                    ],
+                    "variable": [
+                        {
+                            "key": "course_id",
+                            "value": "11",
+                            "description": "The ID of the course."
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Remove the specified resource from storage.",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/api/class/:course_id/booking/:id",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "class",
+                        ":course_id",
+                        "booking",
+                        ":id"
+                    ],
+                    "variable": [
+                        {
+                            "key": "course_id",
+                            "value": "13",
+                            "description": "The ID of the course."
+                        },
+                        {
+                            "key": "id",
+                            "value": "20",
+                            "description": "The ID of the booking."
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "POST api/member/{studio_id}",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/api/member/:studio_id",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "member",
+                        ":studio_id"
+                    ],
+                    "variable": [
+                        {
+                            "key": "studio_id",
+                            "value": "16",
+                            "description": "The ID of the studio."
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "POST api/guest",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/api/guest",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "guest"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "POST api/login",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"email\":\"howe.noah@example.org\",\"password\":\"TOk~q@ka78adyX\"}"
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/api/login",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "login"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "POST api/register",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"name\":\"rhglammefsowxhfiituafn\",\"email\":\"phand@example.org\",\"password\":\"necessitatibus\"}"
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/api/register",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "register"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "POST api/logout",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/api/logout",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "api",
+                        "logout"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": [
+                    "const cookieJar = pm.cookies.jar();",
+                    "",
+                    "pm.request.headers.add({key: 'Accept', value: 'application/json' });",
+                    "pm.request.headers.add({key: 'Content-Type', value: 'application/json' });",
+                    "pm.request.headers.add({key: 'Referer', value: 'http://localhost' });",
+                    "pm.request.headers.add({key: 'Origin', value: 'http://localhost' });"
+                ]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost",
+            "type": "string"
+        }
+    ]
+}

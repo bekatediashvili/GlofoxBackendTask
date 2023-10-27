@@ -6,11 +6,18 @@ use App\Http\Requests\CourseRequest;
 use App\Http\Resources\CourseResource;
 use App\Models\Course;
 use App\Models\Studio;
+use App\Services\CourseService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
+
+    public function __construct(private readonly CourseService $courseService)
+    {
+
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -26,15 +33,6 @@ class CourseController extends Controller
         }
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -44,17 +42,9 @@ class CourseController extends Controller
         $studioId = request()->attributes->get('studio_id');
         $dataWithStudioId = array_merge($date, ['studio_id' => $studioId->id]);
 
+        $course = $this->courseService($dataWithStudioId);
 
-            $course = new Course();
-            $course->course_name = $dataWithStudioId['course_name'];
-            $course->start_date = $dataWithStudioId['start_date'];
-            $course->end_date = $dataWithStudioId['end_date'];
-            $course->capacity = $dataWithStudioId['capacity'];
-            $course->studio_id = $dataWithStudioId['studio_id'];
-            $course->save();
-
-            return response()->json(['message' => 'Course created successfully', 'data' => new  CourseResource($course)], 201);
-
+        return response()->json(['message' => 'Course created successfully', 'data' => new  CourseResource($course)], 201);
     }
 
     public function calculateClassesAndCapacity($courseName): JsonResponse
@@ -77,38 +67,5 @@ class CourseController extends Controller
             'total_capacity' => $totalCapacity,
             'capacity_for_each_class' => $course->capacity
         ]);
-    }
-
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Course $course)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Course $course)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Course $course)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Course $course)
-    {
-        //
     }
 }

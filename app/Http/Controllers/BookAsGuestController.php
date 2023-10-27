@@ -3,25 +3,23 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\User;
+use App\Http\Resources\UserResource;
+use App\Services\UserService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
 class BookAsGuestController extends Controller
 {
-    public function __invoke(): \Illuminate\Http\JsonResponse
+
+    public function __construct(private readonly UserService $userService)
     {
+    }
 
-        $guest = User::create([
-            'name' => 'Guest',
-            'email' => null,
-            'password' => null,
-        ]);
-       Auth::loginUsingId($guest->id);
-        if ($guest) {
-            return response()->json(['message' => 'Guest logged in successfully', 'user' => $guest]);
-        } else {
+    public function __invoke(): JsonResponse
+    {
+        $guest = $this->userService->createGuest();
+        Auth::loginUsingId($guest->id);
+        return response()->json(UserResource::make($guest));
 
-            return response()->json(['message' => 'Guest login failed'], 401);
-        }
     }
 }

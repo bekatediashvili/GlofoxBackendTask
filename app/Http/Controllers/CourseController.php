@@ -42,7 +42,7 @@ class CourseController extends Controller
         $studioId = request()->attributes->get('studio_id');
         $dataWithStudioId = array_merge($date, ['studio_id' => $studioId->id]);
 
-        $course = $this->courseService($dataWithStudioId);
+        $course = $this->courseService->createCourse($dataWithStudioId);
 
         return response()->json(['message' => 'Course created successfully', 'data' => new  CourseResource($course)], 201);
     }

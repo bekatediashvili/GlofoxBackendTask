@@ -17,7 +17,6 @@ class BookAsGuestController extends Controller
             'password' => null,
         ]);
        Auth::loginUsingId($guest->id);
-
         if ($guest) {
             return response()->json(['message' => 'Guest logged in successfully', 'user' => $guest]);
         } else {

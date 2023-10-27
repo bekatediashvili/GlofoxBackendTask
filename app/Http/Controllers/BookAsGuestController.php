@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 class BookAsGuestController extends Controller
 {
-    public function __invoke(){
+    public function __invoke(): \Illuminate\Http\JsonResponse
+    {
 
         $guest = User::create([
             'name' => 'Guest',

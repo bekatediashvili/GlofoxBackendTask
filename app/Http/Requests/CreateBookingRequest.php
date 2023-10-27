@@ -2,17 +2,22 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Booking;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class BookingRequest extends FormRequest
+class CreateBookingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+
+        return $this->user()->can('create', [
+            Booking::class,
+            $this->route('course')
+        ]);
     }
 
     /**

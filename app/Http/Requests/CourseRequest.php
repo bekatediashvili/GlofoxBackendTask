@@ -16,7 +16,7 @@ class CourseRequest extends FormRequest
     {
         return $this->user()->can('create', [
             Course::class,
-            $this->route('class')
+            $this->route('studio')
         ]);
     }
 

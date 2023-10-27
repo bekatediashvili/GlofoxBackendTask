@@ -8,7 +8,6 @@ use App\Models\Course;
 use App\Models\Studio;
 use App\Services\CourseService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
@@ -21,28 +20,49 @@ class CourseController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($studioId)
     {
-        $studios = Studio::where('user_id', auth()->user()->id)->get();
+        $user = auth()->user();
 
-        if ($studios->isNotEmpty()) {
-            $courses = Course::all();
+        $courses = Course::where('studio_id', $user->id)
+            ->where('studio_id', $studioId)
+            ->get();
+
+        if ($courses->isNotEmpty()) {
             return response()->json(['courses' => $courses]);
         } else {
-            return response()->json(['message' => 'You do not own any studios.']);
+            return response()->json(['message' => 'You do not own any courses.']);
         }
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CourseRequest $request)
+    public function store(CourseRequest $request, Studio $studio)
     {
-        $date = $request->validated();
-        $studioId = request()->attributes->get('studio_id');
-        $dataWithStudioId = array_merge($date, ['studio_id' => $studioId->id]);
+        $data = $request->validated();
+        $existingClass = $studio->courses()
+            ->where('course_name', $data['course_name'])
+            ->first();
 
-        $course = $this->courseService->createCourse($dataWithStudioId);
+
+        $overlappingClass = $studio->courses()
+            ->where(function ($query) use ($data) {
+                $query->where(function ($query) use ($data) {
+                    $query->where('start_date', '<=', $data['end_date'])
+                        ->where('end_date', '>=', $data['start_date']);
+                });
+            })
+            ->first();
+
+        if ($existingClass) {
+            return response()->json(['message' => 'A class with the same name already exists in the studio.'], 422);
+        }
+
+        if ($overlappingClass) {
+            return response()->json(['message' => 'A class with chosen dates already exists in the studio.'], 422);
+        }
+        $course = $this->courseService->createCourse($data, $studio->id);
 
         return response()->json(['message' => 'Course created successfully', 'data' => new  CourseResource($course)], 201);
     }

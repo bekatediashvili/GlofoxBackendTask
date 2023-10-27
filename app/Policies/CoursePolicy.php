@@ -5,7 +5,6 @@ namespace App\Policies;
 use App\Models\Course;
 use App\Models\Studio;
 use App\Models\User;
-use Illuminate\Http\Client\Request;
 
 
 class CoursePolicy
@@ -29,14 +28,9 @@ class CoursePolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user,)
+    public function create(User $user, Studio $studio)
     {
-         $studio = Studio::where('user_id', $user->id)->first();
-
-        request()->attributes->set('studio_id' ,$studio);
-        return true;
-
-
+        return $user->id === $studio->user_id;
     }
 
 

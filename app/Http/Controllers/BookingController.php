@@ -7,6 +7,7 @@ use App\Http\Requests\DeleteBookingRequest;
 use App\Models\Booking;
 use App\Models\Course;
 use App\Services\BookingService;
+use Carbon\Carbon;
 
 class BookingController extends Controller
 {
@@ -30,18 +31,13 @@ class BookingController extends Controller
     public function store(CreateBookingRequest $request, Course $course)
     {
         $data = $request->validated();
-
-
         $user = auth()->user();
         $bookingDate = $data['booking_date'];
+        $bookingDateCarbon = Carbon::parse($bookingDate);
+        $startDateCarbon = Carbon::parse($course->start_date);
+        $endDateCarbon = Carbon::parse($course->end_date);
 
-        $isOwnerOrMember = $course->studio->user_id == $user->id || $course->studio->members->contains('id', $user->id);
-
-        if (!$isOwnerOrMember) {
-            return response()->json(['message' => "You do not have permission to book this course."], 403);
-        }
-
-        if ($bookingDate < $course->start_date || $bookingDate > $course->end_date) {
+        if ($bookingDateCarbon < $startDateCarbon || $bookingDateCarbon > $endDateCarbon) {
             return response()->json(['message' => "Booking on $bookingDate is not available"], 422);
         }
         $existingBooking = Booking::where('booking_date', $bookingDate)
@@ -50,7 +46,7 @@ class BookingController extends Controller
             ->first();
 
         if ($existingBooking) {
-            return response()->json(['message' => "You have already made a booking for this date."], 422);
+            return response()->json("You have already made a booking for this date.", 422);
         }
 
         $booking = $this->bookingService->createNewBooking($data['member_name'], $bookingDate, $course->id, $user->id);

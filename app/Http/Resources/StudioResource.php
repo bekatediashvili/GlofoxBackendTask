@@ -15,7 +15,7 @@ class StudioResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'studio_id' => $this->id,
+            'id' => $this->id,
             'user_id' => $this->user_id,
             'name' => $this->name,
         ];

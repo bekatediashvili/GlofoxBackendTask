@@ -25,17 +25,19 @@ class StudioController extends Controller
     public function store(StudioRequest $request)
     {
         $data = $request->validated();
+
+        $existingStudio = Studio::
+        where('name', $data['name'])
+            ->exists();
+        if ($existingStudio) {
+            return response()->json(['message' => 'Studio name  already exists']);
+        }
+
         $studio = new Studio();
         $studio->name = $data['name'];
         $studio->user_id = auth()->user()->id;
         $studio->save();
 
-        $existingStudio = $studio
-            ->where('name', $data['name'])
-            ->first();
-        if ($existingStudio) {
-            return response()->json(['message' => 'Studio name  already exists']);
-        }
 
         $studio->members()->attach(auth()->user());
 

@@ -1,11 +1,12 @@
 ## About
 
-This project uses Laravel Sail which includes PHP 8.2, MySQL. You will not need to install any of these in order to get started. 
+This project uses Laravel Sail which includes PHP 8.2, MySQL. You will not need to install any of these in order to get
+started.
 
 ## Setting up local dev server
 
-In order to start local dev server, ony thing you need is Docker on your OS. But, it can be configured as XAMPP or any other tool.
-
+In order to start local dev server, ony thing you need is Docker on your OS. But, it can be configured as XAMPP or any
+other tool.
 
 1. Create `.env` file
 
@@ -17,7 +18,7 @@ In order to start local dev server, ony thing you need is Docker on your OS. But
     alpine:latest \
     /bin/sh -c "cp .env.example .env"
     ```
-   
+
 
 2. Install composer requirements:
     ```bash
@@ -59,4 +60,4 @@ Then you should screate studio. After that, you create class and are able to boo
 
 All endpoints are described on route: `http://localhost/docs`
 
-Additionally, Postman collection is included in repository with name `postman-collection.json`
+Additionally, Postman collection is included in repository with name `Glofox.postman_collection.json`
